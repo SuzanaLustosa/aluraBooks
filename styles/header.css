@@ -1,0 +1,140 @@
+.cabecalho__menu-hamburguer {
+    width: 24px;
+    height: 24px;
+    background-image: url(../img/Menu.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block; /*para permitir alterar altura e largura*/
+}
+
+.cabecalho {
+    background-color: var(--cor-branco);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /*faz com que o lista-menu fique em posição absoluta em relação ao cabeçalho*/
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.container__imagem {
+    padding: 1em;
+}
+
+.lista-menu {
+    display: none; /*desaparece com o elemento e não ocupa espaço*/
+    position: absolute; /*posição inicial absoluta em relação ao cabeçalho*/
+    top: 100%; /*100% de distância em relação ao topo do cabeçalho*/
+    width: 60vw; /*pega a largura da tela, é como se fosse 60%*/
+}
+
+.container__botao:checked ~ .lista-menu { /*o :checked detecta preenchimento do elemento checkbox*/
+    /*checked ~ .lista-menu -> todos os elementos com a classe lista-menu após o checked*/
+    display: block;
+}
+
+.lista-menu__titulo, 
+.lista-menu__item {
+    padding: 1em;
+    background-color: var(--cor-branco);
+}
+
+.lista-menu__titulo {
+    color: var(--cor-laranja);
+    font-weight: 700;
+}
+
+.lista-menu__link {
+    background: var(--azul-degrade);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text; /*segura a cor de background apenas onde tem texto*/
+    text-transform: uppercase;
+}
+
+.container__botao {
+    display: none;
+}
+
+.container__titulo {
+    display: none;
+}
+
+.opcoes {
+    display: none;
+}
+
+.container__texto {
+    display: none;
+}
+
+@media screen and (min-width: 1024px) {
+    .container__titulo, .container__titulo--negrito {
+        font-family: var(--fonte-secundaria);
+        font-size: 30px;
+    }
+
+    .container__titulo {
+        font-weight: 400;
+        display: block; /*faz ele reaparecer caso o min-width seja 1024px*/
+    }
+
+    .container__titulo--negrito {
+        font-weight: 700;
+    }
+
+    .opcoes {
+        display: flex; /*alinha e faz os elementos reaparecerem*/
+    }
+
+    .opcoes__item {
+        padding: 0 1em;
+        text-transform: uppercase;
+    }
+
+    .opcoes__link {
+        text-decoration: none;
+        color: var(--cor-preto);
+    }
+
+    .container__imagem-transparente {
+        display: none;
+    }
+
+    .cabecalho__menu-hamburguer {
+        display: none;
+    }
+
+    .opcoes__botao:checked ~ .lista-menu {
+        display: block;
+        width: auto; /*preenche apenas o espaço dele*/
+    }
+
+    .opcoes__botao {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1728px) {
+    .container__link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--cor-preto);
+    }
+
+    .cabecalho {
+        padding: 0 2em;
+    }
+
+    .opcoes {
+        margin-right: auto; /*vai tentar preencher todo o espaço que está sobrando*/
+    }
+
+    .container__texto {
+        display: block;
+    }
+}
